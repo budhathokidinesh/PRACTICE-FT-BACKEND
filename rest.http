@@ -1,0 +1,27 @@
+### Testing Endpoints
+
+### people
+
+###Get People
+GET http://localhost:8000/
+
+###Post People
+POST http://localhost:8000/api/v1/peoples
+Content-Type: application/json
+
+{
+    "name": "Dan",
+    "email": "pooja123@gmail.com",
+    "password": "anish"
+}
+###Login People
+
+POST http://localhost:8000/api/v1/peoples/login
+Content-Type: application/json
+
+{
+    "name": "Dan",
+    "email": "pooja123@gmail.com",
+    "password": "anish"
+}
+###Get People
