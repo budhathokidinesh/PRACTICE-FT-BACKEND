@@ -10,6 +10,7 @@ conMongoDb();
 // using middlewares
 app.use(express.json());
 app.use(cors());
+
 //Api end points
 import peopleRouter from "./routers/peopleRouter.js";
 
