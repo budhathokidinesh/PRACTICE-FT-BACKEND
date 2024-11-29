@@ -3,6 +3,7 @@ const router = express.Router();
 import { getUserByEmail, insertPeople } from "../models/PeopleModel.js";
 import { comparePassword, hashPassword } from "../utils/bcryptjs.js";
 import { signJWT } from "../utils/jwt.js";
+import { auth } from "../middlewares/authMiddleware.js";
 
 //Student Signup
 router.post("/", async (req, res, next) => {
@@ -67,6 +68,26 @@ router.post("/login", async (req, res, next) => {
 
     res.status(401).json({
       error: "Invalid email or password",
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+// User profile from the accessJWT
+router.get("/", auth, (req, res, next) => {
+  try {
+    // 1. recieve the token
+    //2. create auth middleware
+    // -validate if the token is validate
+    // get user email from the token
+    // get user by email
+
+    res.json({
+      status: "success",
+      message: "Here is the user profile",
     });
   } catch (error) {
     res.status(500).json({
