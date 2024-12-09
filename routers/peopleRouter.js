@@ -79,15 +79,12 @@ router.post("/login", async (req, res, next) => {
 // User profile from the accessJWT
 router.get("/", auth, (req, res, next) => {
   try {
-    // 1. recieve the token
-    //2. create auth middleware
-    // -validate if the token is validate
-    // get user email from the token
-    // get user by email
+    const user = req.userInfo;
 
     res.json({
       status: "success",
       message: "Here is the user profile",
+      user,
     });
   } catch (error) {
     res.status(500).json({

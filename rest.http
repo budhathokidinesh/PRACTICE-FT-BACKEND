@@ -4,6 +4,7 @@
 
 ###Get People
 GET http://localhost:8000/api/v1/peoples
+Authorization:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBvb2phMTIzQGdtYWlsLmNvbSIsImlhdCI6MTczMzQ5OTU5MSwiZXhwIjoxNzMzNTg1OTkxfQ.jphoThwh6g47JZU-5VQjWSE6d1b746BncEPxTAI1E64
 
 ###Post People
 POST http://localhost:8000/api/v1/peoples
