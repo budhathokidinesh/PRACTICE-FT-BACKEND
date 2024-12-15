@@ -25,4 +25,20 @@ Content-Type: application/json
     "email": "pooja123@gmail.com",
     "password": "anish"
 }
-###Get People
+### Transactions: All private router
+### post new transactions
+POST http://localhost:8000/api/v1/transactions
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBvb2phMTIzQGdtYWlsLmNvbSIsImlhdCI6MTczMzgzMzcwNSwiZXhwIjoxNzMzOTIwMTA1fQ.FIhyM7h6X1gIF84x8k47AUZWrB5xHqwXkePU7ZmxlKs
+
+{
+   "type": "expenses",
+  "title": "Groceries",
+  "amount": "100",
+  "tdate": "10-12-2024"
+}
+
+
+### get all transaction for the specific users
+GET  http://localhost:8000/api/v1/transactions
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBvb2phMTIzQGdtYWlsLmNvbSIsImlhdCI6MTczMzg4MDEwNCwiZXhwIjoxNzMzOTY2NTA0fQ.qAEVpeWZvFJgNv5Y8WiPCdlreiR5sdRFSbe7-i7M244
