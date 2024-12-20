@@ -24,15 +24,12 @@ router.post("/", async (req, res, next) => {
             "Error happened while creating the account. please try later",
         });
   } catch (error) {
-    let msg = error.message;
-    if (msg.includes("E11000 duplicate key error collection")) {
-      msg =
+    if (error.message.includes("E11000 duplicate key error collection")) {
+      error.message =
         "There is another user have used this email, try to login with anoter email.";
     }
-    res.json({
-      status: "error",
-      message: msg,
-    });
+    error.statusCode = 200;
+    next(error);
   }
 });
 
@@ -87,9 +84,7 @@ router.get("/", auth, (req, res, next) => {
       user,
     });
   } catch (error) {
-    res.status(500).json({
-      error: error.message,
-    });
+    next(error);
   }
 });
 export default router;

@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  deleteTransactions,
   getTransaction,
   insertTransaction,
 } from "../models/transaction/TransactionModel.js";
@@ -21,15 +22,12 @@ router.post("/", async (req, res, next) => {
           message: "error happened while adding transactions, try again later",
         });
   } catch (error) {
-    res.json({
-      status: "error",
-      message: message.error,
-    });
+    next(error);
   }
 });
 
 // return all transactions for the specific users
-router.get("/", async (req, res) => {
+router.get("/", async (req, res, next) => {
   try {
     // get all transactions from the database
     const { _id } = req.userInfo;
@@ -40,11 +38,25 @@ router.get("/", async (req, res) => {
       transactions,
     });
   } catch (error) {
-    res.json({
-      status: "error",
-      message: error.message,
-    });
+    next(error);
   }
 });
 
+// Delete transactions
+router.delete("/", async (req, res, next) => {
+  try {
+    // recieve ids[] and _id of the user
+    const ids = req.body;
+    const { _id } = req.userInfo;
+    console.log(ids, _id);
+    // Perform the deletion query
+    const result = await deleteTransactions(_id, ids);
+    res.json({
+      status: "success",
+      message: result.deletedCount + " transaction(s) has been deleted",
+    });
+  } catch (error) {
+    next(error);
+  }
+});
 export default router;
