@@ -11,7 +11,6 @@ router.post("/", async (req, res, next) => {
     // Getting people information
     // encrypting the user password
     req.body.password = hashPassword(req.body.password);
-    console.log(req.body.password);
     const user = await insertPeople(req.body);
     user?._id
       ? res.json({
